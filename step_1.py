@@ -39,3 +39,5 @@ plt.show()
 plt.pie(np.array([len(attr) for attr in emotionKeys]), labels=list(emotions), autopct='%1.1f%%')
 plt.savefig("part2.pdf", format="pdf", bbox_inches="tight") 
 plt.show()
+
+#savefig saves to pdf 
