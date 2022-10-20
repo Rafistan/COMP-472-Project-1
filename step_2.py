@@ -15,10 +15,10 @@ with open('./goemotions.json', 'r') as file:
     #descriptions = [redditPost[0] for redditPost in redditPosts]
     array = np.array(redditPosts) 
     vectorizer = CountVectorizer()
-    labEncoder = preprocessing.LabelEncoder()
+    LabelEncoder = preprocessing.LabelEncoder()
     X = vectorizer.fit_transform(array[:, 0]) #features 
-    Y = labEncoder.fit_transform(array[:, 1]) #emotions 
-    Z = labEncoder.fit_transform(array[:, 2]) #sentiments
+    Y = LabelEncoder.fit_transform(array[:, 1]) #emotions 
+    Z = LabelEncoder.fit_transform(array[:, 2]) #sentiments
     print(vectorizer.get_feature_names_out().size)
 
     #dikran try train_test_split, no idea if it worked 
@@ -110,7 +110,7 @@ with open('./goemotions.json', 'r') as file:
 
     paramsdt = {'criterion': ['gini', 'entropy'], 'max_depth': [2, 4], 'min_samples_split': [2,3,4]} 
 
-    emotioncvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),paramsdt,refit=True) 
+    emotioncvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),paramsdt,refit=True,verbose=3, n_jobs=-1) 
     emotioncvgriddt.fit(x_train, y_train) 
 
     sentimentcvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),paramsdt,refit=True,verbose=3, n_jobs=-1)
