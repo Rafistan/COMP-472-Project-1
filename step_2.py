@@ -19,7 +19,7 @@ with open('./goemotions.json', 'r') as file:
     X = vectorizer.fit_transform(array[:, 0]) #features 
     Y = labEncoder.fit_transform(array[:, 1]) #emotions 
     Z = labEncoder.fit_transform(array[:, 2]) #sentiments
-    #print(vectorizer.get_feature_names_out())
+    print(vectorizer.get_feature_names_out().size)
 
     #dikran try train_test_split, no idea if it worked 
     x_train, x_test = train_test_split(X, test_size=0.2, train_size=0.8, shuffle=False)
@@ -108,14 +108,12 @@ with open('./goemotions.json', 'r') as file:
 
     #gridsearchCV decision tree
 
-    criterion = ['gini', 'entropy'] 
-    max_depth = [2, 4] 
-    min_samples_spit = [2, 3, 4] 
+    paramsdt = {'criterion': ['gini', 'entropy'], 'max_depth': [2, 4], 'min_samples_split': [2,3,4]} 
 
-    emotioncvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),parameters,refit=True) 
+    emotioncvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),paramsdt,refit=True) 
     emotioncvgriddt.fit(x_train, y_train) 
 
-    sentimentcvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),parameters,refit=True,verbose=3, n_jobs=-1)
+    sentimentcvgriddt = GridSearchCV(tree.DecisionTreeClassifier(),paramsdt,refit=True,verbose=3, n_jobs=-1)
     sentimentcvgriddt.fit(x_train, z_train)
 
     emotioncvprddt = emotioncvgriddt.predict(x_test)
@@ -126,7 +124,10 @@ with open('./goemotions.json', 'r') as file:
     print(confusion_matrix(y_test, emotioncvprddt)) 
     print(confusion_matrix(z_test, sentimentcvprddt))
     print(classification_report(y_test, emotioncvprddt)) 
-    print(classification_report(z_test, sentimentcvprddt)) 
+    print(classification_report(z_test, sentimentcvprddt))
+
+
+    #gridsearchCV top MLP 
     
 
 
