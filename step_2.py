@@ -86,14 +86,14 @@ with open('./goemotions.json', 'r') as file:
     print(classification_report(y_test, emotionmlpprd)) 
     print(classification_report(z_test, sentimentmlpprd)) 
 
-    #gridsearchCV
+    #gridsearchCV multinomail naive bayes 
 
-    parameters = {'alpha': [0,0.5,1.0,1.5]}
+    paramsmb = {'alpha': [0,0.5,1.0,1.5]}
 
-    emotioncvgridclf = GridSearchCV(MultinomialNB(),parameters,refit=True,verbose=3,n_jobs=-1)  
+    emotioncvgridclf = GridSearchCV(MultinomialNB(),paramsmb,refit=True,verbose=3,n_jobs=-1)  
     emotioncvgridclf.fit(x_train, y_train) 
 
-    sentimentcvgridclf = GridSearchCV(MultinomialNB(),parameters,refit=True,verbose=3, n_jobs=-1)
+    sentimentcvgridclf = GridSearchCV(MultinomialNB(),paramsmb,refit=True,verbose=3, n_jobs=-1)
     sentimentcvgridclf.fit(x_train, z_train)
 
     emotioncvprd = emotioncvgridclf.predict(x_test)
@@ -107,6 +107,7 @@ with open('./goemotions.json', 'r') as file:
     print(classification_report(z_test, sentimentcvprd)) 
 
     #gridsearchCV decision tree
+    #parameters might be wrong 
 
     paramsdt = {'criterion': ['gini', 'entropy'], 'max_depth': [2, 4], 'min_samples_split': [2,3,4]} 
 
@@ -127,7 +128,26 @@ with open('./goemotions.json', 'r') as file:
     print(classification_report(z_test, sentimentcvprddt))
 
 
-    #gridsearchCV top MLP 
+    #gridsearchCV top MLP
+    #parameters might be wrong 
+    
+    paramsmlp = {'hidden_layer_size': [(30,),(50,)], 'activation': ['tanh', 'relu', 'sigmoid', 'identity'], 'solver': ['adam', 'stochastic']}
+
+    emotioncvgridmlp = GridSearchCV(neural_network.MLPClassifier(),paramsmlp, refit=True) 
+    emotioncvgridmlp.fit(x_train, y_train) 
+
+    sentimentcvgridmlp = GridSearchCV(neural_network.MLPClassifier(),paramsmlp,refit=True,verbose=3, n_jobs=-1)
+    sentimentcvgridmlp.fit(x_train, z_train)
+
+    emotioncvprdmlp = emotioncvgridmlp.predict(x_test)
+    sentimentcvprdmlp = sentimentcvgridmlp.predict(x_test)
+
+    print(emotioncvprdmlp) 
+    print(sentimentcvprdmlp)
+    print(confusion_matrix(y_test, emotioncvprdmlp)) 
+    print(confusion_matrix(z_test, sentimentcvprdmlp))
+    print(classification_report(y_test, emotioncvprdmlp)) 
+    print(classification_report(z_test, sentimentcvprdmlp))  
     
 
 
