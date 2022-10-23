@@ -34,149 +34,149 @@ with open('./goemotions.json', 'r') as file:
 
 
     # #multionmial nb ====================================================================================================
-    # emotion_mnb = MultinomialNB()
-    # emotion_mnb.fit(x_train, y_train)
-    #
-    # sentiment_mnb = MultinomialNB()
-    # sentiment_mnb.fit(x_train, z_train)
-    #
-    # emotion_mnb_prediction = emotion_mnb.predict(x_test)
-    # sentiment_mnb_prediction = sentiment_mnb.predict(x_test)
-    #
-    # emotion_mnb_matrix = confusion_matrix(y_test, emotion_mnb_prediction, labels=emotion_mnb.classes_)
-    # sentiment_mnb_matrix = confusion_matrix(z_test, sentiment_mnb_prediction, labels=sentiment_mnb.classes_)
-    #
-    # emotion_mnb_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=emotion_mnb_matrix,
-    #     display_labels=emotion_mnb.classes_,
-    # )
-    # emotion_mnb_display.plot()
-    # plt.show()
-    #
-    # sentiment_mnb_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=sentiment_mnb_matrix,
-    #     display_labels=sentiment_mnb.classes_,
-    # )
-    # sentiment_mnb_display.plot()
-    # plt.show()
-    #
-    # output_file.write('===================== CLASSIFICATION REPORT FOR BASE-MNB =====================\n')
-    # output_file.write('EMOTIONS REPORT\n')
-    # output_file.write(classification_report(y_test, emotion_mnb_prediction) + '\n\n')
-    # output_file.write('SENTIMENT REPORT\n')
-    # output_file.write(classification_report(z_test, sentiment_mnb_prediction) + '\n\n')
-    # print(classification_report(y_test, emotion_mnb_prediction))
-    # print(classification_report(z_test, sentiment_mnb_prediction))
-    #
-    # #decision tree =====================================================================================================
-    # emotion_dtc = tree.DecisionTreeClassifier()
-    # emotion_dtc.fit(x_train, y_train)
-    #
-    # sentiment_dtc = tree.DecisionTreeClassifier()
-    # sentiment_dtc.fit(x_train, z_train)
-    #
-    # emotion_dtc_prediction = emotion_dtc.predict(x_test)
-    # sentiment_dtc_prediction = sentiment_dtc.predict(x_test)
-    #
-    # emotion_dtc_matrix = confusion_matrix(y_test, emotion_dtc_prediction, labels=emotion_dtc.classes_)
-    # sentiment_dtc_matrix = confusion_matrix(z_test, sentiment_dtc_prediction, labels=sentiment_dtc.classes_)
-    #
-    # emotion_dtc_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=emotion_dtc_matrix,
-    #     display_labels=emotion_dtc.classes_,
-    # )
-    # emotion_dtc_display.plot()
-    # plt.show()
-    #
-    # sentiment_dtc_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=sentiment_dtc_matrix,
-    #     display_labels=sentiment_dtc.classes_,
-    # )
-    # sentiment_dtc_display.plot()
-    # plt.show()
-    #
-    # output_file.write('===================== CLASSIFICATION REPORT FOR BASE-DT =====================\n')
-    # output_file.write('EMOTIONS REPORT\n')
-    # output_file.write(classification_report(y_test, emotion_dtc_prediction) + '\n\n')
-    # output_file.write('SENTIMENT REPORT\n')
-    # output_file.write(classification_report(z_test, sentiment_dtc_prediction) + '\n\n')
-    # print(classification_report(y_test, emotion_dtc_prediction))
-    # print(classification_report(z_test, sentiment_dtc_prediction))
-    #
-    # #multi layered perceptron ==========================================================================================
-    # emotion_mlp = neural_network.MLPClassifier()
-    # emotion_mlp.fit(x_train, y_train)
-    #
-    # sentiment_mlp = neural_network.MLPClassifier()
-    # sentiment_mlp.fit(x_train, z_train)
-    #
-    # emotion_mlp_prediction = emotion_mlp.predict(x_test)
-    # sentiment_mlp_prediction = sentiment_mlp.predict(x_test)
-    #
-    # emotion_mlp_matrix = confusion_matrix(y_test, emotion_mlp_prediction, labels=emotion_mlp.classes_)
-    # sentiment_mlp_matrix = confusion_matrix(z_test, sentiment_mlp_prediction, labels=sentiment_mlp.classes_)
-    #
-    # emotion_mlp_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=emotion_mlp_matrix,
-    #     display_labels=emotion_mlp.classes_,
-    # )
-    # emotion_mlp_display.plot()
-    # plt.show()
-    #
-    # sentiment_mlp_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=sentiment_mlp_matrix,
-    #     display_labels=sentiment_mlp.classes_,
-    # )
-    # sentiment_mlp_display.plot()
-    # plt.show()
-    #
-    # output_file.write('===================== CLASSIFICATION REPORT FOR BASE-MLP =====================\n')
-    # output_file.write('EMOTIONS REPORT\n')
-    # output_file.write(classification_report(y_test, emotion_mlp_prediction) + '\n\n')
-    # output_file.write('SENTIMENT REPORT\n')
-    # output_file.write(classification_report(z_test, sentiment_mlp_prediction) + '\n\n')
-    # print(classification_report(y_test, emotion_mlp_prediction))
-    # print(classification_report(z_test, sentiment_mlp_prediction))
-    #
-    # #gridsearchCV multinomail naive bayes ==============================================================================
-    # # https://www.kaggle.com/code/sfktrkl/titanic-hyperparameter-tuning-gridsearchcv
-    # hyperparameters = {'alpha': [0, 0.5, 1.0, 1.5]}
-    #
-    # emotion_grid_mnb = GridSearchCV(MultinomialNB(), hyperparameters, refit=True, verbose=3, n_jobs=-1)
-    # emotion_grid_mnb.fit(x_train, y_train)
-    #
-    # sentiment_grid_mnb = GridSearchCV(MultinomialNB(), hyperparameters, refit=True, verbose=3, n_jobs=-1)
-    # sentiment_grid_mnb.fit(x_train, z_train)
-    #
-    # emotion_gird_mnb_prediction = emotion_grid_mnb.predict(x_test)
-    # sentiment_gird_mnb_prediction = sentiment_grid_mnb.predict(x_test)
-    #
-    # emotion_grid_mnb_matrix = confusion_matrix(y_test, emotion_gird_mnb_prediction, labels=emotion_grid_mnb.classes_)
-    # sentiment_grid_mnb_matrix = confusion_matrix(z_test, sentiment_gird_mnb_prediction, labels=sentiment_grid_mnb.classes_)
-    #
-    # emotion_grid_mnb_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=emotion_grid_mnb_matrix,
-    #     display_labels=emotion_grid_mnb.classes_,
-    # )
-    # emotion_grid_mnb_display.plot()
-    # plt.show()
-    #
-    # sentiment_grid_mnb_display = ConfusionMatrixDisplay(
-    #     confusion_matrix=sentiment_grid_mnb_matrix,
-    #     display_labels=sentiment_grid_mnb.classes_,
-    # )
-    # sentiment_grid_mnb_display.plot()
-    # plt.show()
-    #
-    # output_file.write('===================== CLASSIFICATION REPORT FOR TOP-MNB =====================\n')
-    # output_file.write('EMOTIONS REPORT\n')
-    # output_file.write(classification_report(y_test, emotion_gird_mnb_prediction) + '\n\n')
-    # output_file.write('SENTIMENT REPORT\n')
-    # output_file.write(classification_report(z_test, sentiment_gird_mnb_prediction) + '\n\n')
-    # print(classification_report(y_test, emotion_gird_mnb_prediction))
-    # print(classification_report(z_test, sentiment_gird_mnb_prediction))
+    emotion_mnb = MultinomialNB()
+    emotion_mnb.fit(x_train, y_train)
 
-    #gridsearchCV decision tree ========================================================================================
+    sentiment_mnb = MultinomialNB()
+    sentiment_mnb.fit(x_train, z_train)
+
+    emotion_mnb_prediction = emotion_mnb.predict(x_test)
+    sentiment_mnb_prediction = sentiment_mnb.predict(x_test)
+
+    emotion_mnb_matrix = confusion_matrix(y_test, emotion_mnb_prediction, labels=emotion_mnb.classes_)
+    sentiment_mnb_matrix = confusion_matrix(z_test, sentiment_mnb_prediction, labels=sentiment_mnb.classes_)
+
+    emotion_mnb_display = ConfusionMatrixDisplay(
+        confusion_matrix=emotion_mnb_matrix,
+        display_labels=emotion_mnb.classes_,
+    )
+    emotion_mnb_display.plot()
+    plt.show()
+
+    sentiment_mnb_display = ConfusionMatrixDisplay(
+        confusion_matrix=sentiment_mnb_matrix,
+        display_labels=sentiment_mnb.classes_,
+    )
+    sentiment_mnb_display.plot()
+    plt.show()
+
+    output_file.write('===================== CLASSIFICATION REPORT FOR BASE-MNB =====================\n')
+    output_file.write('EMOTIONS REPORT\n')
+    output_file.write(classification_report(y_test, emotion_mnb_prediction) + '\n\n')
+    output_file.write('SENTIMENT REPORT\n')
+    output_file.write(classification_report(z_test, sentiment_mnb_prediction) + '\n\n')
+    print(classification_report(y_test, emotion_mnb_prediction))
+    print(classification_report(z_test, sentiment_mnb_prediction))
+
+    #decision tree =====================================================================================================
+    emotion_dtc = tree.DecisionTreeClassifier()
+    emotion_dtc.fit(x_train, y_train)
+
+    sentiment_dtc = tree.DecisionTreeClassifier()
+    sentiment_dtc.fit(x_train, z_train)
+
+    emotion_dtc_prediction = emotion_dtc.predict(x_test)
+    sentiment_dtc_prediction = sentiment_dtc.predict(x_test)
+
+    emotion_dtc_matrix = confusion_matrix(y_test, emotion_dtc_prediction, labels=emotion_dtc.classes_)
+    sentiment_dtc_matrix = confusion_matrix(z_test, sentiment_dtc_prediction, labels=sentiment_dtc.classes_)
+
+    emotion_dtc_display = ConfusionMatrixDisplay(
+        confusion_matrix=emotion_dtc_matrix,
+        display_labels=emotion_dtc.classes_,
+    )
+    emotion_dtc_display.plot()
+    plt.show()
+
+    sentiment_dtc_display = ConfusionMatrixDisplay(
+        confusion_matrix=sentiment_dtc_matrix,
+        display_labels=sentiment_dtc.classes_,
+    )
+    sentiment_dtc_display.plot()
+    plt.show()
+
+    output_file.write('===================== CLASSIFICATION REPORT FOR BASE-DT =====================\n')
+    output_file.write('EMOTIONS REPORT\n')
+    output_file.write(classification_report(y_test, emotion_dtc_prediction) + '\n\n')
+    output_file.write('SENTIMENT REPORT\n')
+    output_file.write(classification_report(z_test, sentiment_dtc_prediction) + '\n\n')
+    print(classification_report(y_test, emotion_dtc_prediction))
+    print(classification_report(z_test, sentiment_dtc_prediction))
+
+    #multi layered perceptron ==========================================================================================
+    emotion_mlp = neural_network.MLPClassifier()
+    emotion_mlp.fit(x_train, y_train)
+
+    sentiment_mlp = neural_network.MLPClassifier()
+    sentiment_mlp.fit(x_train, z_train)
+
+    emotion_mlp_prediction = emotion_mlp.predict(x_test)
+    sentiment_mlp_prediction = sentiment_mlp.predict(x_test)
+
+    emotion_mlp_matrix = confusion_matrix(y_test, emotion_mlp_prediction, labels=emotion_mlp.classes_)
+    sentiment_mlp_matrix = confusion_matrix(z_test, sentiment_mlp_prediction, labels=sentiment_mlp.classes_)
+
+    emotion_mlp_display = ConfusionMatrixDisplay(
+        confusion_matrix=emotion_mlp_matrix,
+        display_labels=emotion_mlp.classes_,
+    )
+    emotion_mlp_display.plot()
+    plt.show()
+
+    sentiment_mlp_display = ConfusionMatrixDisplay(
+        confusion_matrix=sentiment_mlp_matrix,
+        display_labels=sentiment_mlp.classes_,
+    )
+    sentiment_mlp_display.plot()
+    plt.show()
+
+    output_file.write('===================== CLASSIFICATION REPORT FOR BASE-MLP =====================\n')
+    output_file.write('EMOTIONS REPORT\n')
+    output_file.write(classification_report(y_test, emotion_mlp_prediction) + '\n\n')
+    output_file.write('SENTIMENT REPORT\n')
+    output_file.write(classification_report(z_test, sentiment_mlp_prediction) + '\n\n')
+    print(classification_report(y_test, emotion_mlp_prediction))
+    print(classification_report(z_test, sentiment_mlp_prediction))
+
+    #gridsearchCV multinomail naive bayes ==============================================================================
+    # https://www.kaggle.com/code/sfktrkl/titanic-hyperparameter-tuning-gridsearchcv
+    hyperparameters = {'alpha': [0, 0.5, 1.0, 1.5]}
+
+    emotion_grid_mnb = GridSearchCV(MultinomialNB(), hyperparameters, refit=True, verbose=3, n_jobs=-1)
+    emotion_grid_mnb.fit(x_train, y_train)
+
+    sentiment_grid_mnb = GridSearchCV(MultinomialNB(), hyperparameters, refit=True, verbose=3, n_jobs=-1)
+    sentiment_grid_mnb.fit(x_train, z_train)
+
+    emotion_gird_mnb_prediction = emotion_grid_mnb.predict(x_test)
+    sentiment_gird_mnb_prediction = sentiment_grid_mnb.predict(x_test)
+
+    emotion_grid_mnb_matrix = confusion_matrix(y_test, emotion_gird_mnb_prediction, labels=emotion_grid_mnb.classes_)
+    sentiment_grid_mnb_matrix = confusion_matrix(z_test, sentiment_gird_mnb_prediction, labels=sentiment_grid_mnb.classes_)
+
+    emotion_grid_mnb_display = ConfusionMatrixDisplay(
+        confusion_matrix=emotion_grid_mnb_matrix,
+        display_labels=emotion_grid_mnb.classes_,
+    )
+    emotion_grid_mnb_display.plot()
+    plt.show()
+
+    sentiment_grid_mnb_display = ConfusionMatrixDisplay(
+        confusion_matrix=sentiment_grid_mnb_matrix,
+        display_labels=sentiment_grid_mnb.classes_,
+    )
+    sentiment_grid_mnb_display.plot()
+    plt.show()
+
+    output_file.write('===================== CLASSIFICATION REPORT FOR TOP-MNB =====================\n')
+    output_file.write('EMOTIONS REPORT\n')
+    output_file.write(classification_report(y_test, emotion_gird_mnb_prediction) + '\n\n')
+    output_file.write('SENTIMENT REPORT\n')
+    output_file.write(classification_report(z_test, sentiment_gird_mnb_prediction) + '\n\n')
+    print(classification_report(y_test, emotion_gird_mnb_prediction))
+    print(classification_report(z_test, sentiment_gird_mnb_prediction))
+
+    # gridsearchCV decision tree ========================================================================================
     hyperparameters = {'criterion': ['gini', 'entropy'],
                 'max_depth': [2, 3],
                 'min_samples_split': [2, 3, 4]}
@@ -222,10 +222,10 @@ with open('./goemotions.json', 'r') as file:
                        'activation': ['tanh', 'relu', 'sigmoid', 'identity'],
                        'solver': ['adam', 'stochastic']}
 
-    emotion_grid_mlp = GridSearchCV(neural_network.MLPClassifier(), hyperparameters, refit=True)
+    emotion_grid_mlp = GridSearchCV(neural_network.MLPClassifier(verbose=True, max_iter=100), hyperparameters, refit=True, n_jobs=-1)
     emotion_grid_mlp.fit(x_train, y_train)
 
-    sentiment_grid_mlp = GridSearchCV(neural_network.MLPClassifier(), hyperparameters, refit=True,verbose=3, n_jobs=-1)
+    sentiment_grid_mlp = GridSearchCV(neural_network.MLPClassifier(verbose=True, max_iter=100), hyperparameters, refit=True, n_jobs=-1)
     sentiment_grid_mlp.fit(x_train, z_train)
 
     emotion_grid_mlp_prediction = emotion_grid_mlp.predict(x_test)
