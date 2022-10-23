@@ -3,6 +3,11 @@
 .idea/
 .idea/*
 .idea/**
+/.idea
+*.xml
+*.iml
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 output.csv
 part1.pdf
 part2.pdf
