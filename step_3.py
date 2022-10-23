@@ -12,7 +12,8 @@ from sklearn import preprocessing
 
 # 3.1
 word2vec = api.load('word2vec-google-news-300')
-
+# word2vec = api.load('glove-twitter-25')
+# word2vec = api.load('glove-wiki-gigaword-50')
 
 # 3.2 Extract the words from Reddit posts
 
@@ -101,6 +102,15 @@ with open('./goemotions.json', 'r') as file:
         total_test_hits += hits
 
     output_file = open('step3_output.txt', 'a')
+    output_file.write(f'The total word hits in the train set is: {total_train_hits}\n')
+    output_file.write(f'The total words in the train set is: {total_train_tokens}\n')
+    percentage_train = round(((total_train_hits/total_train_tokens)*100), 2)
+    output_file.write(f'Percentage of hits in the train set is: {percentage_train}%\n')
+
+    output_file.write(f'The total word hits in the test set is: {total_test_hits}\n')
+    output_file.write(f'The total words in the test set is: {total_test_tokens}\n')
+    percentage_test = round(((total_test_hits / total_test_tokens) * 100), 2)
+    output_file.write(f'Percentage of hits in the test set is: {percentage_train}%\n\n')
     emotion_mlp = neural_network.MLPClassifier(verbose=True, max_iter=50)
     emotion_mlp.fit(x_train, y_train)
 
